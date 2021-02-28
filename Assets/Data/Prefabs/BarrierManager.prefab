@@ -47,6 +47,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: efc8359c3ef79e94dba1df2a544006c2, type: 2}
   - {fileID: 2100000, guid: 53c99a411cd250f48b5e831d91cd0c60, type: 2}
   - {fileID: 2100000, guid: 56288976036abe141a1a7fad221fe705, type: 2}
-  - {fileID: 2100000, guid: 181340b133d16f54182ffc8fb8bd6f92, type: 2}
+  - {fileID: 2100000, guid: 632a8d1bf49e55546b77368cfe6236bc, type: 2}
   spawning: 1
   prefab: {fileID: 7504115502562430617, guid: f2517b0ae4ed23f4e8b87a8f40e5660f, type: 3}

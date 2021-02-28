@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BarrierBehaviour : MonoBehaviour
 {
+    public float barrierSpeed = 40.0f;
+
     public CurrentColor currentColor = CurrentColor.RED;
 
     private MeshRenderer meshRenderer = null;
@@ -22,34 +24,33 @@ public class BarrierBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.x <= 0.0f)
+        if (transform.position.x <= -20.0f)
             Destroy(gameObject);
 
-        transform.Translate(new Vector3(-40.0f * Time.deltaTime, 0.0f, 0.0f));
+        transform.Translate(new Vector3(-barrierSpeed * Time.deltaTime, 0.0f, 0.0f));
     }
 
-    public void SetColor(int color)
+    public void SetColor(CurrentColor color)
     {
-        meshRenderer.material = BarrierManager.instance.barrierMaterials[color];
-        currentColor = (CurrentColor)color;
-    }
-
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
+        switch (color)
         {
-            var player = other.GetComponent<Player>();
+            case CurrentColor.RED:
+                meshRenderer.material.SetColor("_Color", new Color32(184, 15, 10, 128));
+                break;
 
-            if (player.currentColor == currentColor)
-            {
-                Debug.Log("ALLOWED");
-            }
-            else
-            {
-                Debug.Log("DENIED");
-                player.health -= 1;
-                Debug.Log(player.health);
-            }
+            case CurrentColor.GREEN:
+                meshRenderer.material.SetColor("_Color", new Color32(50, 205, 50, 128));
+                break;
+
+            case CurrentColor.BLUE:
+                meshRenderer.material.SetColor("_Color", new Color32(65, 105, 225, 128));
+                break;
+
+            case CurrentColor.PURPLE:
+                meshRenderer.material.SetColor("_Color", new Color32(102, 51, 153, 128));
+                break;
         }
+
+        currentColor = color;
     }
 }

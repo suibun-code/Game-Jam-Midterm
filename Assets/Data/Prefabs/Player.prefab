@@ -153,15 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b85015221f99044b846344440b507d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  livesText: {fileID: 0}
   currentColor: 0
-  isGrounded: 1
-  materials:
-  - {fileID: 2100000, guid: 6e962465242be3e48bfc42cae3cbdb82, type: 2}
-  - {fileID: 2100000, guid: 618ebff97f2bd8545ab2b8b4886766bf, type: 2}
-  - {fileID: 2100000, guid: bfb42f41b5d5f1d409e0c608edb237aa, type: 2}
-  - {fileID: 2100000, guid: 181340b133d16f54182ffc8fb8bd6f92, type: 2}
-  jumpForce: 10
+  lives: 30
 --- !u!54 &5829811597684517539
 Rigidbody:
   m_ObjectHideFlags: 0

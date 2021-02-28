@@ -1,27 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class BarrierManager : Singleton<BarrierManager>
 {
-    [SerializeField] public Material[] barrierMaterials = null;
-
     public bool spawning = true;
+    public float spawnRateInSeconds = 0.7f;
+    public float barrierSpeed = 40.0f;
+
     public GameObject prefab;
 
     private int lastColor;
     private int currentColor;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         StartCoroutine(SpawnerCoroutine());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     IEnumerator SpawnerCoroutine()
@@ -29,18 +24,19 @@ public class BarrierManager : Singleton<BarrierManager>
         while (spawning)
         {
             GameObject barrier = Instantiate(prefab);
-
-            currentColor = Random.Range(0, 3);
-
-            while (currentColor == lastColor)
-                currentColor = Random.Range(0, 3);
-
-            barrier.GetComponent<BarrierBehaviour>().SetColor(lastColor);
             barrier.transform.parent = transform;
+
+            currentColor = Random.Range(0, (int)CurrentColor.COUNT);
+            while (currentColor == lastColor)
+                currentColor = Random.Range(0, (int)CurrentColor.COUNT);
+
+            var barrierBehaviour = barrier.GetComponent<BarrierBehaviour>();
+            barrierBehaviour.SetColor((CurrentColor)currentColor);
+            barrierBehaviour.barrierSpeed = barrierSpeed;
 
             lastColor = currentColor;
 
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(spawnRateInSeconds);
         }
     }
 }
