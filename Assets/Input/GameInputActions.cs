@@ -57,6 +57,14 @@ public class @GameInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""e55022cb-bc1d-483b-9aab-2d6590d06d5f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -114,6 +122,17 @@ public class @GameInputActions : IInputActionCollection, IDisposable
                     ""action"": ""ChangeColorPurple"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6bbac294-243e-4ef9-9afb-caf8db0c1e7d"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -144,6 +163,7 @@ public class @GameInputActions : IInputActionCollection, IDisposable
         m_Normal_ChangeColorGreen = m_Normal.FindAction("ChangeColorGreen", throwIfNotFound: true);
         m_Normal_ChangeColorBlue = m_Normal.FindAction("ChangeColorBlue", throwIfNotFound: true);
         m_Normal_ChangeColorPurple = m_Normal.FindAction("ChangeColorPurple", throwIfNotFound: true);
+        m_Normal_Pause = m_Normal.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -198,6 +218,7 @@ public class @GameInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Normal_ChangeColorGreen;
     private readonly InputAction m_Normal_ChangeColorBlue;
     private readonly InputAction m_Normal_ChangeColorPurple;
+    private readonly InputAction m_Normal_Pause;
     public struct NormalActions
     {
         private @GameInputActions m_Wrapper;
@@ -207,6 +228,7 @@ public class @GameInputActions : IInputActionCollection, IDisposable
         public InputAction @ChangeColorGreen => m_Wrapper.m_Normal_ChangeColorGreen;
         public InputAction @ChangeColorBlue => m_Wrapper.m_Normal_ChangeColorBlue;
         public InputAction @ChangeColorPurple => m_Wrapper.m_Normal_ChangeColorPurple;
+        public InputAction @Pause => m_Wrapper.m_Normal_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Normal; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -231,6 +253,9 @@ public class @GameInputActions : IInputActionCollection, IDisposable
                 @ChangeColorPurple.started -= m_Wrapper.m_NormalActionsCallbackInterface.OnChangeColorPurple;
                 @ChangeColorPurple.performed -= m_Wrapper.m_NormalActionsCallbackInterface.OnChangeColorPurple;
                 @ChangeColorPurple.canceled -= m_Wrapper.m_NormalActionsCallbackInterface.OnChangeColorPurple;
+                @Pause.started -= m_Wrapper.m_NormalActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_NormalActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_NormalActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_NormalActionsCallbackInterface = instance;
             if (instance != null)
@@ -250,6 +275,9 @@ public class @GameInputActions : IInputActionCollection, IDisposable
                 @ChangeColorPurple.started += instance.OnChangeColorPurple;
                 @ChangeColorPurple.performed += instance.OnChangeColorPurple;
                 @ChangeColorPurple.canceled += instance.OnChangeColorPurple;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -270,5 +298,6 @@ public class @GameInputActions : IInputActionCollection, IDisposable
         void OnChangeColorGreen(InputAction.CallbackContext context);
         void OnChangeColorBlue(InputAction.CallbackContext context);
         void OnChangeColorPurple(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

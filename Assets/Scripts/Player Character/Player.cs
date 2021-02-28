@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
 {
     //TEXT
     public TextMeshProUGUI livesText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI comboText;
+    public TextMeshProUGUI scoreMultiplierText;
 
     //PLAYER VARIABLES
     private float jumpForce = 15;
@@ -36,10 +39,15 @@ public class Player : MonoBehaviour
         _meshRenderer = GetComponent<MeshRenderer>();
         _rigidBody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
+
+        GameObject.FindGameObjectWithTag("Music").GetComponent<MenuMusic>().StopMusic();
     }
     void Start()
     {
         livesText.SetText("Lives: " + lives);
+        scoreText.SetText("Score: " + score);
+        comboText.SetText("Combo: " + combo);
+        scoreMultiplierText.SetText("Score Multiplier: " + scoreMultiplier);
     }
 
     public void OnChangeColorRed(InputValue value)
@@ -97,7 +105,7 @@ public class Player : MonoBehaviour
             if (barrier.currentColor == currentColor)
             {
                 combo += 1;
-                scoreMultiplier = 1 + combo / 20;
+                scoreMultiplier = 1 + combo / 20.0f;
             }
             else
             {
@@ -119,6 +127,11 @@ public class Player : MonoBehaviour
                 SceneManager.LoadScene("MainMenu");
         }
 
+        score += 1 * scoreMultiplier;
+
         livesText.SetText("Lives: " + lives);
+        scoreText.SetText("Score: " + score);
+        comboText.SetText("Combo: " + combo);
+        scoreMultiplierText.SetText("Score Multiplier: " + scoreMultiplier);
     }
 }
