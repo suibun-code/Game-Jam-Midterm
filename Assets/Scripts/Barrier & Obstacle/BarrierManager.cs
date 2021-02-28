@@ -16,6 +16,29 @@ public class BarrierManager : Singleton<BarrierManager>
     
     void Start()
     {
+        switch (InfoKeeperStatic.difficulty)
+        {
+            case 0:
+                spawnRateInSeconds = 2.0f;
+                barrierSpeed = 25.0f;
+                break;
+
+            case 1:
+                spawnRateInSeconds = 1.3f;
+                barrierSpeed = 35.0f;
+                break;
+
+            case 2:
+                spawnRateInSeconds = 0.7f;
+                barrierSpeed = 40.0f;
+                break;
+
+            default:
+                spawnRateInSeconds = 0.7f;
+                barrierSpeed = 40.0f;
+                break;
+        }
+
         StartCoroutine(SpawnerCoroutine());
     }
 

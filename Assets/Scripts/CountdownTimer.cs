@@ -23,6 +23,6 @@ public class CountdownTimer : MonoBehaviour
         timerText.SetText("" + currentTime);
 
         if (currentTime <= 0f)
-            SceneManager.LoadScene("WinScreen");
+            SceneManager.LoadScene("WinScene");
     }
 }

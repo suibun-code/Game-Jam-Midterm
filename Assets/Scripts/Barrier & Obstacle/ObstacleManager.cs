@@ -14,6 +14,33 @@ public class ObstacleManager : MonoBehaviour
 
     void Start()
     {
+        switch (InfoKeeperStatic.difficulty)
+        {
+            case 0:
+                spawnRateMinTime = 3.0f;
+                spawnRateMaxTime = 6.0f;
+                obstacleSpeed = 20.0f;
+                break;
+
+            case 1:
+                spawnRateMinTime = 1.7f;
+                spawnRateMaxTime = 3.0f;
+                obstacleSpeed = 30.0f;
+                break;
+
+            case 2:
+                spawnRateMinTime = 1.0f;
+                spawnRateMaxTime = 2.0f;
+                obstacleSpeed = 45.0f;
+                break;
+
+            default:
+                spawnRateMinTime = 1.0f;
+                spawnRateMaxTime = 2.0f;
+                obstacleSpeed = 45.0f;
+                break;
+        }
+
         StartCoroutine(SpawnerCoroutine());
     }
 

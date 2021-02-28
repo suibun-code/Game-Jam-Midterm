@@ -133,5 +133,10 @@ public class Player : MonoBehaviour
         scoreText.SetText("Score: " + score);
         comboText.SetText("Combo: " + combo);
         scoreMultiplierText.SetText("Score Multiplier: " + scoreMultiplier);
+
+        InfoKeeperStatic.score = score;
+
+        if (InfoKeeperStatic.highestCombo < combo)
+            InfoKeeperStatic.highestCombo = combo;
     }
 }

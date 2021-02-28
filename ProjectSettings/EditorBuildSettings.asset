@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/CreditsMenu.unity
     guid: 7ae7adb89a5517e4fabf082ab9c6bfff
   - enabled: 1
-    path: Assets/Scenes/WinScreen.unity
-    guid: e164fda6414d4a44d80b406f6932b8f4
+    path: Assets/Scenes/HowToPlay.unity
+    guid: 72b34defe6ae2694fa5f51c11f36b446
+  - enabled: 1
+    path: Assets/Scenes/DifficultyScene.unity
+    guid: 76106d767f1f8db47b175cada2518135
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: e8bcb47dfc627fa45a335262e451f55e
   m_configObjects: {}

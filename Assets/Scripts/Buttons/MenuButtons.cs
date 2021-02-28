@@ -24,4 +24,32 @@ public class MenuButtons : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void OnClickHowToPlay()
+    {
+        SceneManager.LoadScene("HowToPlay");
+    }
+
+    public void OnClickDifficulty()
+    {
+        SceneManager.LoadScene("DifficultyScene");
+    }
+
+    public void OnClickEasy()
+    {
+        InfoKeeperStatic.difficulty = 0;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void OnClickMedium()
+    {
+        InfoKeeperStatic.difficulty = 1;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void OnClickHard()
+    {
+        InfoKeeperStatic.difficulty = 2;
+        SceneManager.LoadScene("MainMenu");
+    }
 }
