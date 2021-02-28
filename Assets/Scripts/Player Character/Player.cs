@@ -111,6 +111,14 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (other.tag == "Obstacle")
+        {
+            lives -= 1;
+
+            if (lives <= 0)
+                SceneManager.LoadScene("MainMenu");
+        }
+
         livesText.SetText("Lives: " + lives);
     }
 }

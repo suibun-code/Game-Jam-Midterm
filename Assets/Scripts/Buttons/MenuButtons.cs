@@ -9,4 +9,14 @@ public class MenuButtons : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
+
+    public void OnClickCredits()
+    {
+
+    }
+
+    public void OnClickExit()
+    {
+        Application.Quit();
+    }
 }
