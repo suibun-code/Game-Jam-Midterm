@@ -9,7 +9,7 @@ public class CountdownTimer : MonoBehaviour
     public TextMeshProUGUI timerText;
 
     float currentTime = 0f;
-    private float startingTime = 140f;
+    private float startingTime = 160f;
 
     void Start()
     {

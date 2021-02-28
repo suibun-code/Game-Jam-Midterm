@@ -2668,6 +2668,10 @@ PrefabInstance:
       propertyPath: scoreMultiplierText
       value: 
       objectReference: {fileID: 791964312}
+    - target: {fileID: 1540257023, guid: 1dce6f2b13a7fd14eaa3fa4e4a279fdc, type: 3}
+      propertyPath: lives
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3521388669726480529, guid: 1dce6f2b13a7fd14eaa3fa4e4a279fdc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2
