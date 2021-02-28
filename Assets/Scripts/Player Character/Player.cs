@@ -17,19 +17,25 @@ public class Player : MonoBehaviour
     private float scoreMultiplier = 1.0f;
     private bool isGrounded = true;
 
+    public bool isJumping = false;
     public CurrentColor currentColor = CurrentColor.RED;
     public int lives = 30;
 
     //Components
-    private Transform playerTransform;
-    private Rigidbody rigidBody;
-    private MeshRenderer meshRenderer = null;
+    private Transform _playerTransform;
+    private Rigidbody _rigidBody;
+    private MeshRenderer _meshRenderer;
+    private Animator _animator;
+
+    //Animator Hashes
+    private readonly int IsJumpingHash = Animator.StringToHash("IsJumping");
 
     private void Awake()
     {
-        playerTransform = transform;
-        meshRenderer = GetComponent<MeshRenderer>();
-        rigidBody = GetComponent<Rigidbody>();
+        _playerTransform = transform;
+        _meshRenderer = GetComponent<MeshRenderer>();
+        _rigidBody = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
     }
     void Start()
     {
@@ -39,33 +45,42 @@ public class Player : MonoBehaviour
     public void OnChangeColorRed(InputValue value)
     {
         currentColor = CurrentColor.RED;
-        meshRenderer.material.SetColor("_Color", new Color32(184, 15, 10, 255));
+        _meshRenderer.material.SetColor("_Color", new Color32(184, 15, 10, 255));
     }
     public void OnChangeColorGreen(InputValue value)
     {
         currentColor = CurrentColor.GREEN;
-        meshRenderer.material.SetColor("_Color", new Color32(50, 205, 50, 255));
+        _meshRenderer.material.SetColor("_Color", new Color32(50, 205, 50, 255));
     }
     public void OnChangeColorBlue(InputValue value)
     {
         currentColor = CurrentColor.BLUE;
-        meshRenderer.material.SetColor("_Color", new Color32(65, 105, 225, 255));
+        _meshRenderer.material.SetColor("_Color", new Color32(65, 105, 225, 255));
     }
     public void OnChangeColorPurple(InputValue value)
     {
         currentColor = CurrentColor.PURPLE;
-        meshRenderer.material.SetColor("_Color", new Color32(102, 51, 153, 255));
+        _meshRenderer.material.SetColor("_Color", new Color32(102, 51, 153, 255));
     }
     public void OnJump(InputValue value)
     {
-        if (isGrounded)
-            rigidBody.AddForce(playerTransform.up * jumpForce, ForceMode.Impulse);
+        if (!isJumping)
+        {
+            isJumping = value.isPressed;
+            _animator.SetBool(IsJumpingHash, isJumping);
+            _rigidBody.AddForce(_playerTransform.up * jumpForce, ForceMode.Impulse);
+        }
     }
 
     void OnCollisionEnter(Collision other)
     {
         if (other.collider.tag == "Ground")
+        {
             isGrounded = true;
+            isJumping = false;
+
+            _animator.SetBool(IsJumpingHash, isJumping);
+        }
     }
     void OnCollisionExit(Collision other)
     {
