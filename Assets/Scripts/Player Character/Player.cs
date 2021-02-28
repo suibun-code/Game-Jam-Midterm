@@ -10,8 +10,10 @@ public enum CurrentColor
     BLUE
 }
 
-public class PlayerController : MonoBehaviour
+public class Player : MonoBehaviour
 {
+    public int health = 3;
+
     public CurrentColor currentColor = CurrentColor.RED;
 
     public bool isGrounded = true;
