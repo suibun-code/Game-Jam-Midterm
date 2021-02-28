@@ -448,8 +448,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: All credit for this title, other than music used, go to Ramin Amiri student
-    #101190944.
+  m_text: All credit for this title, other than music, water, & fire effect used,
+    go to Ramin Amiri student #101190944.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b4c2c178cfca668469040d4b9600d543, type: 2}
   m_sharedMaterial: {fileID: 8265281509211492718, guid: b4c2c178cfca668469040d4b9600d543, type: 2}
