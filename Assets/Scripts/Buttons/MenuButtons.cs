@@ -12,11 +12,16 @@ public class MenuButtons : MonoBehaviour
 
     public void OnClickCredits()
     {
-
+        SceneManager.LoadScene("CreditsMenu");
     }
 
     public void OnClickExit()
     {
         Application.Quit();
+    }
+
+    public void OnClickMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

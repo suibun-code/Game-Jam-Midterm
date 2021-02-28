@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1131410029677273991}
   - component: {fileID: 346910885742719966}
   - component: {fileID: 6048070174108755634}
+  - component: {fileID: 237340020}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Obstacle
@@ -109,3 +110,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacleSpeed: 25
+--- !u!95 &237340020
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7249419026845267862}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd693b1011c5cdd4c8fc2b173dc307b3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

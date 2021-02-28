@@ -12,6 +12,7 @@ public class ObstacleBehaviour : MonoBehaviour
         if (transform.position.x <= -20.0f)
             Destroy(gameObject);
 
-        transform.Translate(new Vector3(-obstacleSpeed * Time.deltaTime, 0.0f, 0.0f));
+        transform.position = new Vector3(transform.position.x - obstacleSpeed * Time.deltaTime, transform.position.y,
+            transform.position.z);
     }
 }
