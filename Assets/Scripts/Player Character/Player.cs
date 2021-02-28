@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
                 lives -= 1;
 
                 if (lives <= 0)
-                    SceneManager.LoadScene("MainMenu");
+                    SceneManager.LoadScene("LostScene");
 
                 combo = 0;
                 scoreMultiplier = 0;
