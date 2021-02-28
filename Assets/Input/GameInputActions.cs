@@ -49,6 +49,14 @@ public class @GameInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChangeColorPurple"",
+                    ""type"": ""Button"",
+                    ""id"": ""fbf32d1b-6fd6-447f-843f-0f2f543e333e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -95,6 +103,17 @@ public class @GameInputActions : IInputActionCollection, IDisposable
                     ""action"": ""ChangeColorBlue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd22781b-c6b7-428d-8284-443b243ded05"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeColorPurple"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -124,6 +143,7 @@ public class @GameInputActions : IInputActionCollection, IDisposable
         m_Normal_ChangeColorRed = m_Normal.FindAction("ChangeColorRed", throwIfNotFound: true);
         m_Normal_ChangeColorGreen = m_Normal.FindAction("ChangeColorGreen", throwIfNotFound: true);
         m_Normal_ChangeColorBlue = m_Normal.FindAction("ChangeColorBlue", throwIfNotFound: true);
+        m_Normal_ChangeColorPurple = m_Normal.FindAction("ChangeColorPurple", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -177,6 +197,7 @@ public class @GameInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Normal_ChangeColorRed;
     private readonly InputAction m_Normal_ChangeColorGreen;
     private readonly InputAction m_Normal_ChangeColorBlue;
+    private readonly InputAction m_Normal_ChangeColorPurple;
     public struct NormalActions
     {
         private @GameInputActions m_Wrapper;
@@ -185,6 +206,7 @@ public class @GameInputActions : IInputActionCollection, IDisposable
         public InputAction @ChangeColorRed => m_Wrapper.m_Normal_ChangeColorRed;
         public InputAction @ChangeColorGreen => m_Wrapper.m_Normal_ChangeColorGreen;
         public InputAction @ChangeColorBlue => m_Wrapper.m_Normal_ChangeColorBlue;
+        public InputAction @ChangeColorPurple => m_Wrapper.m_Normal_ChangeColorPurple;
         public InputActionMap Get() { return m_Wrapper.m_Normal; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -206,6 +228,9 @@ public class @GameInputActions : IInputActionCollection, IDisposable
                 @ChangeColorBlue.started -= m_Wrapper.m_NormalActionsCallbackInterface.OnChangeColorBlue;
                 @ChangeColorBlue.performed -= m_Wrapper.m_NormalActionsCallbackInterface.OnChangeColorBlue;
                 @ChangeColorBlue.canceled -= m_Wrapper.m_NormalActionsCallbackInterface.OnChangeColorBlue;
+                @ChangeColorPurple.started -= m_Wrapper.m_NormalActionsCallbackInterface.OnChangeColorPurple;
+                @ChangeColorPurple.performed -= m_Wrapper.m_NormalActionsCallbackInterface.OnChangeColorPurple;
+                @ChangeColorPurple.canceled -= m_Wrapper.m_NormalActionsCallbackInterface.OnChangeColorPurple;
             }
             m_Wrapper.m_NormalActionsCallbackInterface = instance;
             if (instance != null)
@@ -222,6 +247,9 @@ public class @GameInputActions : IInputActionCollection, IDisposable
                 @ChangeColorBlue.started += instance.OnChangeColorBlue;
                 @ChangeColorBlue.performed += instance.OnChangeColorBlue;
                 @ChangeColorBlue.canceled += instance.OnChangeColorBlue;
+                @ChangeColorPurple.started += instance.OnChangeColorPurple;
+                @ChangeColorPurple.performed += instance.OnChangeColorPurple;
+                @ChangeColorPurple.canceled += instance.OnChangeColorPurple;
             }
         }
     }
@@ -241,5 +269,6 @@ public class @GameInputActions : IInputActionCollection, IDisposable
         void OnChangeColorRed(InputAction.CallbackContext context);
         void OnChangeColorGreen(InputAction.CallbackContext context);
         void OnChangeColorBlue(InputAction.CallbackContext context);
+        void OnChangeColorPurple(InputAction.CallbackContext context);
     }
 }

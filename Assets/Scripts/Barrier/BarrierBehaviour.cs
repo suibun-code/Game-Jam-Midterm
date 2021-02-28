@@ -16,18 +16,22 @@ public class BarrierBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector3(-5.0f * Time.deltaTime, 0.0f, 0.0f));
+        if (transform.position.x <= 0.0f)
+            Destroy(gameObject);
+
+        transform.Translate(new Vector3(-40.0f * Time.deltaTime, 0.0f, 0.0f));
     }
 
-    public void SetMaterial(Material material)
+    public void SetColor(int color)
     {
-        meshRenderer.material = material;
+        meshRenderer.material = BarrierManager.instance.barrierMaterials[color];
+        currentColor = (CurrentColor)color;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -36,14 +40,15 @@ public class BarrierBehaviour : MonoBehaviour
         {
             var player = other.GetComponent<Player>();
 
-            if (player.currentColor != currentColor)
+            if (player.currentColor == currentColor)
             {
-                Debug.Log("DENIED");
-                player.health -= 1;
+                Debug.Log("ALLOWED");
             }
             else
             {
-                Debug.Log("ALLOWED");
+                Debug.Log("DENIED");
+                player.health -= 1;
+                Debug.Log(player.health);
             }
         }
     }

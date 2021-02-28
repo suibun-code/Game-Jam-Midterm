@@ -7,7 +7,8 @@ public enum CurrentColor
 {
     RED,
     GREEN,
-    BLUE
+    BLUE,
+    PURPLE
 }
 
 public class Player : MonoBehaviour
@@ -39,19 +40,25 @@ public class Player : MonoBehaviour
     public void OnChangeColorRed(InputValue value)
     {
         currentColor = CurrentColor.RED;
-        meshRenderer.material = materials[0];
+        meshRenderer.material = materials[(int)currentColor];
     }
 
     public void OnChangeColorGreen(InputValue value)
     {
         currentColor = CurrentColor.GREEN;
-        meshRenderer.material = materials[1];
+        meshRenderer.material = materials[(int)currentColor];
     }
 
     public void OnChangeColorBlue(InputValue value)
     {
         currentColor = CurrentColor.BLUE;
-        meshRenderer.material = materials[2];
+        meshRenderer.material = materials[(int)currentColor];
+    }
+
+    public void OnChangeColorPurple(InputValue value)
+    {
+        currentColor = CurrentColor.PURPLE;
+        meshRenderer.material = materials[(int)currentColor];
     }
 
     public void OnJump(InputValue value)

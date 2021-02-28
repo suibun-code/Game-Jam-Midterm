@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 1540257019}
   - component: {fileID: 1540257023}
   - component: {fileID: 5829811597684517539}
-  - component: {fileID: 8197276575560451594}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -161,6 +160,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 6e962465242be3e48bfc42cae3cbdb82, type: 2}
   - {fileID: 2100000, guid: 618ebff97f2bd8545ab2b8b4886766bf, type: 2}
   - {fileID: 2100000, guid: bfb42f41b5d5f1d409e0c608edb237aa, type: 2}
+  - {fileID: 2100000, guid: 181340b133d16f54182ffc8fb8bd6f92, type: 2}
   jumpForce: 10
 --- !u!54 &5829811597684517539
 Rigidbody:
@@ -178,16 +178,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!65 &8197276575560451594
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3521388669726480533}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
